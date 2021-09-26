@@ -52,8 +52,4 @@ export default Ember.Service.extend({
       }
     }
   },
-
-  clear(){
-    this.get('itemIds').clear()
-  }
 });
