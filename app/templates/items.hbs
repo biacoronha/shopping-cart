@@ -1,0 +1,34 @@
+<h1>Items</h1>
+
+<div class="cart">
+  {{#link-to 'checkout'}}Shopping Cart: {{this.cart.totalQntInCart}} Items{{/link-to}}
+</div>
+
+<div class="row">
+  <div class="col-sm-4 col-xs-6">
+    {{!-- {{#link-to 'monsters' tagName="button"}}Monster Index{{/link-to}} --}}
+    <div class="item-index-list">
+      {{#each model as |item|}}
+          <div class="item-info">
+            <span>
+              {{item.code}}
+            </span>
+            <span>
+              {{item.name}}
+            </span>
+            <span>
+              £{{item.price}}
+            </span>
+             Quantity: <button class="btn" type="button" {{action 'decreaseQntToBuy' item}}>-</button> {{item.qntToAdd}} <button class="btn" type="button" {{action 'increaseQntToBuy' item}}>+</button>
+          <button class="btn" type="button" {{action 'buyItem' item}}>
+            Buy Item
+          </button>
+          </div>
+        
+      {{/each}}
+    </div>
+  </div>
+  <div class="col-sm-8 col-xs-6">
+    {{liquid-outlet}}
+  </div>
+</div>

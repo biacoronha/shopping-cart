@@ -1,0 +1,31 @@
+<h1>Your Cart</h1>
+
+<div class="nav">
+  {{#link-to 'items'}}Back to shopping{{/link-to}}
+</div>
+
+
+<div class="cart">
+  {{#each this.cart.item as |item|}}
+    <div class="cart-item">
+      <div class="details">
+        <span>{{item.name}}</span>
+        <span>Price: £{{item.price}}</span>
+        <span>
+          {{#if item.applyDiscount}}
+            Price with discount: £{{item.newPrice}}
+          {{/if}}
+        </span>
+        <span>Quantity: {{item.qntInCart}}</span>
+        <button type="button" {{action 'removeItem' item}}>Remove</button>
+      </div>
+    </div>
+  {{/each}}
+  <button type="button" {{action 'clear'}}>Clear Cart</button>
+  <hr>
+  Total: £{{this.cart.total}}
+  <br>
+  {{#if this.cart.showDiscountTotal}}
+  Total After Discounts: £{{this.cart.newTotal}}
+  {{/if}}
+</div>
